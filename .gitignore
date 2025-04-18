@@ -1,0 +1,13 @@
+.env
+.venv
+__pycache__
+
+# all data files but not the README, and the download script
+data/*
+!data/README.md
+!data/download_datasets.sh
+
+# General macOS 
+.DS_Store
+.AppleDouble
+.LSOverride
