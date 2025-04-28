@@ -10,7 +10,7 @@ class TokenClass(Enum):
     # Location, Path, Socket, IP, URL
     LOCATION = 'Location'
     VARIABLE = 'Variable'
-    SPECIAL_CHAR = 'SpecialChar'
+    SYMBOL = 'Symbol'
     PUNCTUATION = 'Punctuation'
     MISC = 'Misc'
     UNKNOWN = 'Unknown'
@@ -70,13 +70,18 @@ class RegexTokenClassMatcher:
             'key-value-pairs greedy'
         ))
 
-        # TODO Note, this will even match e.g. "=x" and "x="
+        # TODO Note, these two will even match e.g. "=x" and "x="
         # unclean key-value pairs
         # if contains only one '='
         regex_list.append(_RegexPatternEntry(
-            r'^[^=]*=[^=]*$',
+            r'^[^=]*=[^=]+$',
             TokenClass.KEY_VALUE_PAIR,
-            'key-value-pairs incomplete'
+            'key-value-pairs incomplete left'
+        ))
+        regex_list.append(_RegexPatternEntry(
+            r'^[^=]+=[^=]*$',
+            TokenClass.KEY_VALUE_PAIR,
+            'key-value-pairs incomplete right'
         ))
 
         # multiple key-value pairs
@@ -415,12 +420,16 @@ class RegexTokenClassMatcher:
 
 
         # punctuation
-        import string
-        string.punctuation
-
+        #import string
+        #string.punctuation
+        #!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~
+        # These punctuation mess up SYM and PUNCT, so they were separated
+        
+        punct_chars=re.escape(r""".,;:!?()[]{}_…“”‘’"'/\|·«»`~¿¡•""")
+        
         regex_list.append(
             _RegexPatternEntry(
-                r'['+string.punctuation+']',
+                r'['+punct_chars+']',
                 TokenClass.PUNCTUATION,
                 'single punctuation'
             ))
@@ -428,9 +437,25 @@ class RegexTokenClassMatcher:
         # multiple punctuation
         regex_list.append(
             _RegexPatternEntry(
-                r'['+string.punctuation+']+',
+                r'['+punct_chars+']+',
                 TokenClass.PUNCTUATION,
                 'multiple punctuation'
+            ))
+        
+        # symbols
+        sym_chars=re.escape(r"""+-=*^%$&§¤#@<>©®™°±×÷√∞∑∏∫∆µπΩ≠≈∈∩∪⊂⊃∅∇⊕⊗⇒⇔""")
+        regex_list.append(
+            _RegexPatternEntry(
+                r'['+sym_chars+']',
+                TokenClass.SYMBOL,
+                'single symbol'
+            ))
+        # multiple symbols
+        regex_list.append(
+            _RegexPatternEntry(
+                r'['+sym_chars+']+',
+                TokenClass.SYMBOL,
+                'multiple symbols'
             ))
 
         return regex_list

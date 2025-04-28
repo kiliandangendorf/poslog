@@ -15,9 +15,8 @@ def _correct_tagset_mapping_inability(c:Counter, tagset)->Counter:
     if tagset=='upos':
         #TODO make manual adjustments for some tags
 
-        # TODO: Should we do this?
+        # if there is only one X, then it is not a tag, so we remove it
         if 'X' in c and len(c)>=2:
-            # if there is only one X, then it is not a tag, so we remove it
             majority_tag=c.most_common(2)[1][0] if c.most_common(1)[0][0] == 'X' else c.most_common(1)[0][0]
             c[majority_tag]=c[majority_tag]+c['X']
             del c['X']
@@ -40,12 +39,6 @@ def _correct_tagset_mapping_inability(c:Counter, tagset)->Counter:
         if 'SYM' in c and 'NUM' in c and len(c)==2:
             c['SYM']=c['SYM']+c['NUM']
             del c['NUM']
-
-        # TODO: Should we do this?
-        # if PROPN and NOUN: PROPN
-        if 'PROPN' in c and 'NOUN' in c and len(c)==2:
-            c['PROPN']=c['PROPN']+c['NOUN']
-            del c['NOUN']
 
         # remove NIL
         # NIL should never occur but if it does, then move it to majority

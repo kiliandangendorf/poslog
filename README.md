@@ -14,6 +14,8 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+?? python -m ipykernel install --user --name=poslog
+
 ## Datasets 
 As stated in [`data/README.md`](/data/README.md) you can download the datasets or link them manually in file [`local_datasets.py`](local_datasets.py) to easily access them within this project.
 

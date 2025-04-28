@@ -11,7 +11,7 @@ scipy==1.12
 stanza # the "new stanfordnlp" (https://github.com/stanfordnlp/stanza)
 nltk
 spacy
-treetaggerwrapper
+treetaggerwrapper==2.3
 # at least v1.1.2 since there were some bugs in the previous version
 HanTa==1.1.2
 
