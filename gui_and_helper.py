@@ -96,6 +96,12 @@ def save_results():
         message+=f"\n\nWARNING: The following indices still have Nones: {still_nones}"
     messagebox.showinfo("Save Complete", message)
 
+
+def get_number_of_solved_unsolved():
+    unsolved=len([pl for pl in gui_logs if None in pl.manual_tags])
+    solved=len(gui_logs)-unsolved
+    return solved, unsolved
+
 ######################
 # Navigate
 ######################
@@ -229,7 +235,7 @@ def display_case(gui_log:GuiLogs, dropdowns_for_all=True):
     tk.Label(context_frame, text=f"Logline #{gui_log.idx}: {gui_log.log_line}", anchor='w').grid(row=0, column=1, sticky="w")
     #.pack(anchor="w")
 
-    tk.Label(context_frame, text=f"(Item {current_index+1} of {len(gui_logs)} in this session)", anchor='w').grid(row=1, column=1, sticky="w")
+    tk.Label(context_frame, text=f"(Item {current_index+1} of {len(gui_logs)} in this session; {get_number_of_solved_unsolved()[0]} solved, {get_number_of_solved_unsolved()[1]} unsolved)", anchor='w').grid(row=1, column=1, sticky="w")
     #pack(anchor="w", pady=(0, 20))
 
     

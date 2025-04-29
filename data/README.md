@@ -67,12 +67,3 @@ To remove datasets use the script with the parameter `remove` and type `"yes"`:
 
 This will only remove datasets in the list mentioned above.
 Manually added folder will stay untouched.
-
-# Public MQTT Broker
-
-We thought about using data of a public MQTT broker as they are similar to log data of a CPS.
-Using [`mosquitto_sub`](https://mosquitto.org/download/) we can subscribe to all topics and receive messages:
-```bash
-mosquitto_sub -h test.mosquitto.org -v -t '#' > test-mosquitto-org.txt
-```
-

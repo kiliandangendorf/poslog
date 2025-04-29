@@ -8,6 +8,7 @@ data/*
 !data/download_datasets.sh
 
 backup/
+figures/
 
 # General macOS 
 .DS_Store
