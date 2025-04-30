@@ -8,7 +8,8 @@ data/*
 !data/download_datasets.sh
 
 backup/
-figures/
+#figures/
+x_dev.ipynb
 
 # General macOS 
 .DS_Store

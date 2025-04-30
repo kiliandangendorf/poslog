@@ -122,7 +122,7 @@ def print_stats_on_tag_comparison(tag_comparisons:list[TagComparison])->None:
             none_in_majority+=1
             none_times_in_words+=tag_comparison.majority.count(None)
         total_words+=len(tag_comparison.majority)
-        clear_majority_words+=tag_comparison.confidence.count(1.0)
+        clear_majority_words+=tag_comparison.confidence.count(1.0)+tag_comparison.confidence.count(1.1)
         eighty_percent_majority_words+=len([c for c in tag_comparison.confidence if c>=0.8])
         absolute_majority_words+=len([c for c in tag_comparison.confidence if c>0.5])
         
