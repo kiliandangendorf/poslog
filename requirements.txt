@@ -20,3 +20,5 @@ sklearn-crfsuite
 
 # for GUI
 tk
+
+poslog

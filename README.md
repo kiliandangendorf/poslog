@@ -1,4 +1,8 @@
-# PosLog
+# PosLog: Creating a PoS Tagger for Log Messages
+
+This repo belongs to the work of the same name, in which a corpus of log messages was compiled and annotated in Upos. 
+The PosLog classifier, a PoS tagger specifically for log messages, was then trained on this corpus.
+The development process is documented in this repo.
 
 ## Install Requirements in Virtual Environment
 1. Create virtual environment
@@ -19,43 +23,22 @@ If you want to use this kernel in Jupyter Notebook, you need to install the kern
 python -m ipykernel install --user --name=poslog
 ```
 
+## Developing PosLog
+
+For development purposes, you can install the package in editable mode. 
+(Otherwise it will be installed by `pip` from the `requirements.txt`)
+```bash
+pip install -e src/
+```
+
+Having trouble this way, you may try to install the package without symlinks:
+```bash
+pip install src/
+```
+
 # PosLog Usage
-- **Use Default model**  
-    ```python
-    from nlp import PrometeusTokenizer
-    from nlp.pos import PosLogCRF
+PosLog usage you may find here: [`src/README.md`](/src/README.md).
 
-    tokenizer=PrometeusTokenizer()
-    s="Tag this sentence."
-    tokens=tokenizer.tokenize(s)
-    # ['Tag', 'this', 'sentence', '.']
-
-    pos_log=PosLogCRF()
-    pos_log.predict(tokens)
-    # ['VERB' 'DET' 'NOUN' 'PUNCT']
-    ```
-- **Train your own model**  
-    Define model name in constructor:
-    ```python
-    pos_log=PosLogCRF(model_name="my_model")
-    ```
-
-    PosLog takes training data as tokens and tags separately:
-    ```python
-    train(X_train_tokens:list[list[str]], y_train_tags:list[list[str]])
-    ```
-    Or as token and tag pairs:
-    ```python
-    train_from_tagged_sents(tagged_sents:list[list[tuple[str,str]]])
-    ```
-
-    Note training will override existing model with the same name.
-
-- **Use your own model**  
-    Just call the constructor with the model name:
-    ```python
-    pos_log=PosLogCRF(model_name="my_model")
-    ```
 
 # Reproduce Training Data 
 
@@ -65,7 +48,8 @@ As stated in [`data/README.md`](/data/README.md) you can download the datasets f
 
 ## Data Processing
 Following the numbered notebooks:
-- `1_templates_collect_numb_var.ipynb`
+- `1_templates_collect_numb_var.ipynb`:
+    Collec
 - `2_pos_tagging_create.ipynb`
 - `2-2_tag_comparison_correction.ipynb`
 - `3_random_sample.ipynb`

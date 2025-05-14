@@ -2,14 +2,24 @@
 .venv
 __pycache__
 
+#pypi
+dist/
+build
+*.egg-info
+deploy_pypi.sh
+
 # all data files but not the README, and the download script
 data/*
 !data/README.md
 !data/download_datasets.sh
 
 backup/
+paper/
 #figures/
 x_dev.ipynb
+
+poslog/models/*
+!poslog/models/pos_log_upos_crf_10k_model.pkl
 
 # General macOS 
 .DS_Store
