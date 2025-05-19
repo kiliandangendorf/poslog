@@ -19,7 +19,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='poslog',
-    version='0.6',
+    version='0.7',
     author='Kilian Dangendorf',
     description='PosLog: A CRF-based Part-of-Speech Tagger for Log Messages',
     long_description=long_description,

@@ -15,7 +15,7 @@ PosLog usage you may find here: [`src/README.md`](/src/README.md).
 - [Reproduce Training Data](#reproduce-training-data)
   - [Install Requirements in Virtual Environment](#install-requirements-in-virtual-environment)
   - [Developing PosLog](#developing-poslog)
-  - [?? Troubleshooting](#-troubleshooting)
+  - [Troubleshooting](#troubleshooting)
   - [Data Processing](#data-processing)
   - [1. Selection of Data](#1-selection-of-data)
   - [2. PoS Tagging and Tagset Mapping](#2-pos-tagging-and-tagset-mapping)
@@ -27,7 +27,7 @@ PosLog usage you may find here: [`src/README.md`](/src/README.md).
   - [3. Random Sample](#3-random-sample)
   - [4. Manual Adjustment](#4-manual-adjustment)
   - [5. Training PosLog](#5-training-poslog)
-- [?? Citation](#-citation)
+- [Citation](#citation)
 - [References](#references)
 
 ## Install Requirements in Virtual Environment
@@ -62,8 +62,12 @@ Having trouble this way, you may try to install the package without symlinks:
 pip install src/
 ```
 
-## ?? Troubleshooting
-tt Safe
+## Troubleshooting
+- TreeTagger and `SafeConfigParser`:
+    For python 3.11 you'll need to change the line in `.venv/lib/python3.11/site-packages/treetaggerwrapper.py` from   
+    `g_config = configparser.SafeConfigParser()` to   
+    `g_config = configparser.ConfigParser()` (currently it’s line 544).
+
 
 ## Data Processing
 The following five notebooks guide you through the preparation of the corpus. 
@@ -361,8 +365,7 @@ Stanza is by far the slowest by a factor greater than 100.
 
 See [PosLog Usage](#poslog-usage) for usage examples.
 
-# ?? Citation
-
+# Citation
 
 Kilian Dangendorf, Sven-Ove Hänsel, Jannik Rosendahl, Felix Heine, Carsten Kleiner, Christian Wartena. 
 **PosLog: Creating a PoS Tagger for Log Messages.** *On the importance of being published*, 2025.

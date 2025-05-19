@@ -1,19 +1,5 @@
 # PosLog
 A CRF-based Part-of-Speech (POS) Tagger for Log Messages.
-In comparison to SoTA PoS taggers, PosLog is trained on a corpus of log messages and achieves an accuracy of 98.27% on the test set.
-
-**Table: Accuracy of PoS tagger in comparison.**  
-*Ordered by increasing accuracy. The time is shown in seconds per 1 million tokens.*
-| Tagger     | Time   | Accuracy   |
-|------------|--------|------------|
-| NLTK       | **28** | 77.28%     |
-| HanTa      | 506    | 78.74%     |
-| TreeTagger | 43     | 79.58%     |
-| SpaCy      | 428    | 80.89%     |
-| Stanza     | 5,376  | 90.25%     |
-| poslog     | 45     | **98.27%** |
-
-
 
 # Usage
 
