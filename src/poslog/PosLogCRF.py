@@ -92,6 +92,13 @@ class PosLogCRF(AbstractPosTagger):
         tokens=self.tokenizer.tokenize(X)
         return self.predict(tokens)
 
+    def predict_string_as_tuple(self, X:str)->list[tuple[str,str]]:
+        if self.tokenizer is None:
+            self.tokenizer=PosLogTokenizer()
+        tokens=self.tokenizer.tokenize(X)
+        tags=self.predict(tokens)
+        return list(zip(tokens, tags))
+
 
     def make_features(self, words:list[str])->list[dict[str,str]]:
         features_list=[]
