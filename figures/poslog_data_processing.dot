@@ -1,53 +1,36 @@
-digraph log2graph{
-	#rankdir="TB"; // Top to Bottom
-	#rankdir="BT"; // Bottom to Top
-	rankdir="LR"; // Left to Right
-	#rankdir="RL"; // Right to Left
+digraph pipeline{
+	rankdir=LR;
 	margin=0.05;
 	ranksep=0;
-	nodesep=0.5; // Add node separation to align nodes at the same level
-
-	subgraph docs {
-		node[shape=note, margin=0.05];
-		raw[label="Raw Logs"];
-		//sample[label="Samples"];
-		templates[label="Templates"];
-		mappings[label="Tagset Mappings"];
-		tokens[label="Tokens"];
-		tagged0[label="Tagged Messages"];
-		//parameters[label="Parameters"];
-		//graphs[label="Graph"];	
-		
-	};
-	// subgraph proc {
-	// 	node[shape=hexagon, margin=0.01];
-	// 	parser[label="Sample & Parse"];
-	// 	tokenizer[label="Tokenize"];
-	// 	//enricher[label="Enricher", color=red];
-	// 	create_mappings[label="Create Mappings"];
-	// 	tagger[label="PoS Tag"];
-	// 	correct[label="Compare & Correct"];
-	// }
-
-	// CROP ABOVE!
+	nodesep=0.5;
 	
-	raw->templates[label="Sample\n& Parse\n(3.1)"];
-
-	templates->tokens[label="Tokenize\n(3.2)"];
-
-	// tokens->tagged0[label="PoS Tag &\nApply Mappings\n(3.4)"];
-	tokens->tagged0[label="PoS Tag\n(3.4)"];
-
-	mappings->mappings[label="Create\nMappings\n(3.3)"];
-
-	mappings->tagged0[label="Apply Mappings\n(3.4)"];
+	// Node styles
+	node[shape=note];
+	raw[label="Raw\nLogs"];
+	templates[label="Templates"];
+	mappings[label="Tagset\nMappings"];
+	tokens[label="Tokens"];
+	tagged[label="Tagged\nMessages"];
+	corpus[label="Log Messages\nCorpus"];
+	poslog[label="PosLog"];
 	
-	tagged0:n->tagged0[label="Correct &\nCompare\n(3.5)"];
 
-	//tagged0->tagged0[label="Manual Correction\n(3.6)", dir=both, arrowtail=normal, constraint=false, tailport=sw, headport=se];
-	tagged0:s->tagged0[label="Manual Adjustment\n(3.7)"];
+	raw->templates[label="Sample\n& Parse\n(1)"];
+	templates->tokens[label="Tokenize\n(1)"];
 
-	//reorder with invisible edges
-	//edge[style=invis];
-	//node[style=invis];
+	mappings:n->mappings[label="Create\nMappings\n(2)"];
+
+	a[shape=point, style=invis, width=0, height=0];
+	tokens->a[label="PoS Tag\n(2)"];
+	mappings->a[xlabel="Apply\nMappings\n(2)"];
+	a->tagged[minlen=2];
+	
+	tagged:n->tagged[label="Correct &\nCompare\n(2.2)"];
+	tagged:s->tagged[label="Random\nSample\n(3)"];
+	
+	tagged->corpus[label="Manual\nAdjustment\n(4)"];
+
+	corpus->poslog[label="Train\n(5)"];
+	
+	
 }

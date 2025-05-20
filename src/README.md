@@ -4,7 +4,7 @@ A CRF-based Part-of-Speech (POS) Tagger for Log Messages.
 # Usage
 
 ## Use Default Model
-There are three ways to use the default model:
+There are three ways to use the model:
 1. Predict the PoS tags of a **list of tokens** returning a list of tags.
     ```python
     from poslog import PosLogTokenizer, PosLogCRF

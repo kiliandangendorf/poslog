@@ -102,6 +102,8 @@ The numbering correlates with the following sections:
     **Output:** `/src/poslog/models/pos_log_upos_crf_10k_model.pkl`  
     
 
+![Data Processing Pipeline](figures/poslog_data_processing.png)  
+*Figure: Overview of the data processing pipeline.*
 
 ## 1. Selection of Data
 
