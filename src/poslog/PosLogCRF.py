@@ -110,7 +110,7 @@ class PosLogCRF(AbstractPosTagger):
 
             kind_of_known_word = self.kwdet.kind_of_known_word(word)
             features['is_stopword'] = 1 if kind_of_known_word == WordKind.STOP_WORD else 0
-            features['is_wordnet'] = 1 if kind_of_known_word == WordKind.WORD_NET else 0
+            #features['is_wordnet'] = 1 if kind_of_known_word == WordKind.WORD_NET else 0
             features['is_wordnet'] = 1 if kind_of_known_word == WordKind.WORD_NET or kind_of_known_word == WordKind.WORDS_DICTIONARY else 0
             features['is_domain_word'] = 1 if kind_of_known_word == WordKind.DOMAIN_WORD else 0
             features['is_number'] = 1 if kind_of_known_word == WordKind.NUMBER else 0
