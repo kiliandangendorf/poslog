@@ -1,4 +1,4 @@
-# PosLog: Creating a PoS Tagger for Log Messages
+# PosLog: Creating a Part of Speech Tagger for Log Messages
 
 This repo belongs to the work of the same name, in which a corpus of log messages was compiled and annotated in Upos. 
 PosLog, a PoS tagger specifically for log messages, was then trained on this corpus.
@@ -297,10 +297,10 @@ Now that the automated tagging is complete, we validate it with a random
 sample. 
 Again, we use a random subset of the fully tagged log messages (i.e. a
 majority was found for each token in each message). 
-This subset contains 100 log messages consisting of 824 tokens. 
+This subset contains 100 log messages consisting of 875 tokens. 
 We reviewed these 100 messages manually and corrected wrongly tagged tokens. 
 The result can be found in the following table. 
-Errors occurred in a total of 29 tokens during the automated tag correction. There are 17 errors confusing
+Errors occurred in a total of 26 tokens during the automated tag correction. There are 15 errors confusing
 `NOUN` with `PROPN`. However, since `NOUN` is the superclass of `PROPN`,
 we can consider these to be less severe. (In the original
 Upos with 12 tags,
@@ -309,20 +309,20 @@ truth finding is 96.4 % correct, increasing to 98.5 % when excluding
 less severe cases.
 
 **Table: Errors in sample of the automated truth finding.**  
-*For example, tag `NOUN` was corrected to `PROPN` 14 times in 824 tokens, which corresponds to 1.7%.*
+*For example, tag `NOUN` was corrected to `PROPN` 8 times in 875 tokens, which corresponds to 0.9%.*
 
 | Wrong Tag | Corrected Tag  | Abs. Occurrence| Rel. Occurrence    | Group Total  |
 |-----------|----------------|----------------|--------------------|--------------|
-| `NOUN`    | `PROPN`        | 14             | 1.7%               |              |
-| `PROPN`   | `NOUN`         | 3              | 0.4%               | ∑=2.1%       |
+| `PROPN`   | `NOUN`         | 8              | 0.9%               |              |
+| `NOUN`    | `PROPN`        | 7              | 0.8%               | ∑=1.7%       |
 ||
-| `VERB`    | `ADJ`          | 3              | 0.4%               |              |
-| `NOUN`    | `VERB`         | 3              | 0.4%               |              |
-| `NOUN`    | `PRON`         | 2              | 0.2%               |              |
+| `VERB`    | `ADJ`          | 3              | 0.3%               |              |
+| `PROPN`   | `X`            | 2              | 0.2%               |              |
+| `NOUN`    | `VERB`         | 2              | 0.2%               |              |
+| `NOUN`    | `PRON`         | 1              | 0.1%               |              |
 | `PROPN`   | `ADJ`          | 1              | 0.1%               |              |
 | `VERB`    | `NOUN`         | 1              | 0.1%               |              |
-| `PROPN`   | `X`            | 1              | 0.1%               |              |
-| `NOUN`    | `X`            | 1              | 0.1%               | ∑=1.5%       |
+| `ADJ`     | `PROPN`        | 1              | 0.1%               | ∑=1.3%       |
 ||
 
 
