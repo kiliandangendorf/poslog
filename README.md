@@ -346,16 +346,12 @@ For time measurement, we concatenated the test data set with itself 10 times so 
 
 | Tagger     | Time   | Accuracy   |
 |------------|--------|------------|
-| **NLTK**   | **28** | 77.28%     |
-| HanTa      | 506    | 78.74%     |
-| TreeTagger | 43     | 79.58%     |
-| SpaCy      | 428    | 80.89%     |
-| Stanza     | 5,376  | 90.25%     |
-| poslog     | 45     | **98.27%** |
-
-
-We need to keep in mind that there can be up to 3.5% error in the training data according to our random sample.
-So in a worst-case scenario, we need to subtract this from the accuracy of PosLog, but this will not detract from its pole position.
+| **NLTK**   | **25** | 77.90%     |
+| HanTa      | 352    | 79.29%     |
+| SpaCy      | 425    | 80.14%     |
+| TreeTagger | 43     | 80.26%     |
+| Stanza     | 5,776  | 88.30%     |
+| poslog     | 40     | **96.10%** |
 
 
 With 90.25%, Stanza achieves significantly higher accuracy than NLTK, HanTa, Spacy and TreeTagger, which reach around 80% accuracy.
