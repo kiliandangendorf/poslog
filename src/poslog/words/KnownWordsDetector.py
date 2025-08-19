@@ -26,7 +26,7 @@ class KnownWordsDetector:
                 nltk.data.find(f'corpora/{dependency}')
             except LookupError:
                 logger.info(f"Initializing {self.__class__.__name__}")
-                logger.info(f"Did not found corpora '{dependency}'. Downloading...")
+                logger.info(f"Did not find corpus '{dependency}'. Downloading...")
                 nltk.download(dependency)
 
         self.case_sensitive = case_sensitive

@@ -11,7 +11,7 @@ class PostInstallCommand(install):
             try:
                 nltk.data.find(f'corpora/{dependency}')
             except LookupError:
-                print(f"Did not found corpora '{dependency}'. Downloading...")
+                print(f"Did not find corpus '{dependency}'. Downloading...")
                 nltk.download(dependency)
 
 with open("README.md", "r", encoding="utf-8") as fh:
