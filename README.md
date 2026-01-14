@@ -365,8 +365,10 @@ See [PosLog Usage](#poslog-usage) for usage examples.
 
 # Citation
 
-Kilian Dangendorf, Sven-Ove Hänsel, Jannik Rosendahl, Felix Heine, Carsten Kleiner, Christian Wartena. 
-**PosLog: Creating a PoS Tagger for Log Messages.** *On the importance of being published*, 2025.
+Kilian Dangendorf, Sven-Ove Hänsel, Jannik Rosendahl, Felix Heine, Carsten Kleiner, and Christian Wartena. 
+"**PosLog: Creating a Part of Speech Tagger for Log Messages**," 
+2025 IEEE 13th International Conference on Intelligent Data Acquisition and Advanced Computing Systems: Technology and Applications (IDAACS), Gliwice, Poland, 2025, 
+pp. 1444-1449, doi: 10.1109/IDAACS68557.2025.11322035
 
 # References
 
